@@ -40,6 +40,6 @@ Le projet est organisé en plusieurs branches, chacune correspondant à un modul
 ## **Contributeurs**  
 - **Abdelmalek Lamkadem** : Responsable du projet et développement principal.
 - **Marouane ACHARIFI** : Responsable de calibration des capteurs et programmation des cartes electroniques. 
-- **El mahdi kabiri** : Responsable de développement IHM .
+- **El Mahdi Kabiri** : Responsable de développement IHM .
 
 
