@@ -1,6 +1,4 @@
-Voici un exemple de fichier `README.md` descriptif et structuré pour votre projet **AssistoBot** :
 
----
 
 # **AssistoBot**  
 
@@ -37,39 +35,7 @@ Le projet est organisé en plusieurs branches, chacune correspondant à un modul
 
 ---
 
-## **Installation et Utilisation**
 
-### **1. Prérequis**  
-- **Matériel** :  
-  - Robot physique équipé de capteurs et d’une interface tactile.  
-- **Logiciel** :  
-  - Python 3.9+  
-  - Frameworks : Flask, PyTorch, OpenCV, etc.  
-  - Application desktop compatible avec Windows/Mac/Linux.  
-
-### **2. Installation**  
-1. Clonez le dépôt Git :  
-   ```bash
-   git clone https://github.com/abdelmalek-lamkadem/AssistoBot.git
-   cd AssistoBot
-   ```
-2. Installez les dépendances nécessaires :  
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### **3. Lancer le projet**  
-- **Pour le robot interactif** :  
-  ```bash
-  python robot_main.py
-  ```
-- **Pour l’application desktop** :  
-  Lancez le fichier exécutable ou utilisez le script Python dédié :
-  ```bash
-  python admin_app.py
-  ```
-
----
 
 ## **Contributeurs**  
 - **Abdelmalek Lamkadem** : Responsable du projet et développement principal.
