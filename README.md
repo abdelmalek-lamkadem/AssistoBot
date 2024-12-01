@@ -41,5 +41,6 @@ Le projet est organisé en plusieurs branches, chacune correspondant à un modul
 - **Abdelmalek Lamkadem** : Responsable du projet et développement principal.
 - **Marouane ACHARIFI** : Responsable de calibration des capteurs et programmation des cartes electroniques. 
 - **El Mahdi Kabiri** : Responsable de développement IHM .
+- **Mohamed EL MAHDI** : Responsable de développement de module de génération des emplois du temps. 
 
 
