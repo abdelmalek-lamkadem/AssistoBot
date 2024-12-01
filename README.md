@@ -27,9 +27,9 @@ Le projet est organisé en plusieurs branches, chacune correspondant à un modul
 
 | **Branche**                    | **Description**                                                                 |
 |--------------------------------|---------------------------------------------------------------------------------|
-| [`IHM`](https://github.com/abdelmalek-lamkadem/AssistoBot/tree/IHM]                          | Développement de l’interface utilisateur pour interagir avec le robot.          |
-| `Sensors-Calibrating`          | Calibration et gestion des capteurs utilisés par le robot.                      |
-| `Navigations-Model`            | Implémentation du modèle de navigation pour guider les utilisateurs.            |
+| [`IHM`](https://github.com/abdelmalek-lamkadem/AssistoBot/tree/IHM)                          | Développement de l’interface utilisateur pour interagir avec le robot.          |
+| [`Sensors-Calibrating`](https://github.com/abdelmalek-lamkadem/AssistoBot/tree/Sensors-Calibrating)          | Calibration et gestion des capteurs utilisés par le robot.                      |
+| [`Navigations-Model`](https://github.com/abdelmalek-lamkadem/AssistoBot/tree/Navigations-Model)            | Implémentation du modèle de navigation pour guider les utilisateurs.            |
 | `3D-Modeling`                  | Création et optimisation des modèles 3D du robot et de ses composants.          |
 | `Schedule-Generating-Model`    | Développement d’un algorithme de génération automatique d’emplois du temps.     |
 
