@@ -72,7 +72,8 @@ Le projet est organisé en plusieurs branches, chacune correspondant à un modul
 ---
 
 ## **Contributeurs**  
-- **Abdelmalek Lamkadem** : Responsable du projet et développement principal.  
+- **Abdelmalek Lamkadem** : Responsable du projet et développement principal.
+- **Marouane ACHARIFI** : Responsable de calibration des capteurs et programmation des cartes electroniques. 
 - [Ajoutez les noms d'autres contributeurs ici si nécessaire]
 
 ---
