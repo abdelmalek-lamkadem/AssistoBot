@@ -27,7 +27,7 @@ Le projet est organisé en plusieurs branches, chacune correspondant à un modul
 
 | **Branche**                    | **Description**                                                                 |
 |--------------------------------|---------------------------------------------------------------------------------|
-| `IHM`                          | Développement de l’interface utilisateur pour interagir avec le robot.          |
+| [`IHM`](https://github.com/abdelmalek-lamkadem/AssistoBot/tree/IHM]                          | Développement de l’interface utilisateur pour interagir avec le robot.          |
 | `Sensors-Calibrating`          | Calibration et gestion des capteurs utilisés par le robot.                      |
 | `Navigations-Model`            | Implémentation du modèle de navigation pour guider les utilisateurs.            |
 | `3D-Modeling`                  | Création et optimisation des modèles 3D du robot et de ses composants.          |
@@ -42,23 +42,4 @@ Le projet est organisé en plusieurs branches, chacune correspondant à un modul
 - **Marouane ACHARIFI** : Responsable de calibration des capteurs et programmation des cartes electroniques. 
 - [Ajoutez les noms d'autres contributeurs ici si nécessaire]
 
----
 
-## **Contribuer**  
-
-Les contributions sont les bienvenues ! Suivez ces étapes pour proposer une amélioration :  
-1. Forkez le projet.  
-2. Créez une branche pour vos modifications :  
-   ```bash
-   git checkout -b feature-nom-de-la-fonctionnalité
-   ```
-3. Effectuez vos modifications et soumettez une Pull Request.  
-
----
-
-## **Licence**  
-Ce projet est sous licence [MIT](LICENSE).
-
----
-
-Ce fichier README offre une description claire du projet, de ses objectifs, de sa structure et des étapes nécessaires pour collaborer. Vous pouvez adapter les détails selon les spécificités de votre projet. 😊
