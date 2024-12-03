@@ -2,7 +2,7 @@
 
 # **AssistoBot**  
 
-AssistoBot est un robot interactif conçu pour améliorer l'expérience des étudiants, enseignants, administrateurs et visiteurs dans un environnement scolaire. Il agit comme un assistant intelligent, capable de fournir des informations personnalisées, de guider les utilisateurs à travers l'établissement et d'effectuer des tâches administratives essentielles.  
+AssistoBot est un dispositif équipé d'un écran tactile et d'un robot pour le guidage, conçu pour améliorer l'expérience des étudiants, enseignants, administrateurs et visiteurs dans un établissement scolaire. Le robot aide les utilisateurs à s'orienter dans l’établissement, tandis que l'écran tactile permet d'accéder à des services personnalisés, comme la consultation des emplois du temps, des informations administratives et l’envoi de demandes simples. Intuitive et accessible, cette station optimise la gestion de l’environnement scolaire. 
 
 ---
 
