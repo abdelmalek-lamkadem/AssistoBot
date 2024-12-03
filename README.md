@@ -8,13 +8,10 @@ AssistoBot est un dispositif équipé d'un écran tactile et d'un robot pour le 
 
 ## **Fonctionnalités principales**
 
-### **1. Robot interactif**  
 - **Navigation intelligente** : Aide les utilisateurs à localiser des salles de classe, bureaux ou autres infrastructures.  
 - **Consultation personnalisée** : Permet aux étudiants de s’identifier via une carte scolaire et de consulter leurs emplois du temps.  
 - **Interface conviviale** : Fournit une interface simple et intuitive pour interagir avec le robot.  
 - **Affichage d'annonces** : Présente les informations importantes comme les événements scolaires ou les mises à jour.  
-
-### **2. Application de gestion (Administration)**  
 - **Génération des emplois du temps** : Modèle intelligent pour créer et organiser les plannings des enseignants et étudiants.  
 - **Gestion des annonces** : Ajout et mise à jour des informations importantes pour l’établissement.  
 - **Centralisation des données** : Accès facile aux outils de gestion via une application desktop dédiée.  
