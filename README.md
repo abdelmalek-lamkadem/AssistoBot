@@ -1,2 +1,2 @@
 # AssistoBot
-robot interactif intégré à un établissement scolaire pour améliorer l'expérience des étudiants, enseignants, administrateurs et visiteurs. Le robot servira de guide intelligent et d’assistant numérique, capable de répondre aux besoins spécifiques des utilisateurs. En complément.
+Cette branche propose une implémentation optimisée pour générer des emplois du temps adaptés aux contraintes définies. Consultez la documentation interne pour les détails techniques. Contributions et retours sont encouragés.
