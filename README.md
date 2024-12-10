@@ -33,6 +33,7 @@ The navigation system is built using:
     <img width="100%" src="https://github.com/reiniscimurs/DRL-robot-navigation/blob/main/training.gif">
 </p>  
 
+---
 
 
 ### **Obstacle Detection with Rviz**:  
