@@ -4,8 +4,10 @@
 
 
 This project features a navigation system designed for the **Interactive Robotic Station**, aimed at enhancing the experience of students, teachers, administrators, and visitors in educational institutions. The system integrates an autonomous mobile robot and a touchscreen interface to provide intuitive guidance and personalized services.
+ 
+---
 
-**Gazebo Simulation**:  
+### **Gazebo Simulation**:  
 <p align="center">
     <img width="80%" src="https://github.com/reiniscimurs/DRL-robot-navigation/blob/main/env1.png">
 </p>    
