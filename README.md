@@ -2,7 +2,13 @@
 
 # **Station Robotique Interactive - Navigation System**  
 
-This project features a navigation system designed for the **Interactive Robotic Station**, aimed at enhancing the experience of students, teachers, administrators, and visitors in educational institutions. The system integrates an autonomous mobile robot and a touchscreen interface to provide intuitive guidance and personalized services.  
+
+This project features a navigation system designed for the **Interactive Robotic Station**, aimed at enhancing the experience of students, teachers, administrators, and visitors in educational institutions. The system integrates an autonomous mobile robot and a touchscreen interface to provide intuitive guidance and personalized services.
+
+**Gazebo Simulation**:  
+<p align="center">
+    <img width="80%" src="https://github.com/reiniscimurs/DRL-robot-navigation/blob/main/env1.png">
+</p>    
 
 ---
 
@@ -29,17 +35,9 @@ The navigation system is built using:
     <img width="100%" src="https://github.com/reiniscimurs/DRL-robot-navigation/blob/main/training.gif">
 </p>  
 
-**Gazebo Simulation**:  
-<p align="center">
-    <img width="80%" src="https://github.com/reiniscimurs/DRL-robot-navigation/blob/main/env1.png">
-</p>  
+
 
 **Obstacle Detection with Rviz**:  
 <p align="center">
     <img width="80%" src="https://github.com/reiniscimurs/DRL-robot-navigation/blob/main/velodyne.png">
 </p>  
-
----
-
-## **Project Outcomes**  
-This navigation system demonstrates the integration of robotic guidance and interactive interfaces to streamline user experiences in educational environments. It ensures accessibility, efficiency, and safety for all users.  
