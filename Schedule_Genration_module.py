@@ -1,124 +1,107 @@
-from ortools.sat.python import cp_model
 import pandas as pd
-import collections
 import random
-from ortools.sat.python import swig_helper
-# Données
+
+# Fonction pour saisir les données de l'utilisateur
+def saisir_professeurs():
+    professeurs = {}
+    n = int(input("Combien de professeurs voulez-vous saisir ? "))
+    for i in range(1, n + 1):
+        nom = input(f"Nom du professeur {i} : ")
+        disponibilites = input(f"Disponibilités pour {nom} (séparées par des virgules) : ").split(",")
+        disponibilites = [d.strip() for d in disponibilites]
+        professeurs[i] = {"nom": nom, "disponibilités": disponibilites}
+    return professeurs
+
+def saisir_classes():
+    classes = {}
+    n = int(input("Combien de classes voulez-vous saisir ? "))
+    for i in range(1, n + 1):
+        nom = input(f"Nom de la classe {i} : ")
+        classes[i] = {"nom": nom}
+    return classes
+
+def saisir_matieres(professeurs):
+    matieres = {}
+    n = int(input("Combien de matières voulez-vous saisir ? "))
+    for i in range(1, n + 1):
+        nom = input(f"Nom de la matière {i} : ")
+        professeur_id = int(input(f"ID du professeur pour {nom} (1-{len(professeurs)}) : "))
+        cours = int(input(f"Nombre d'heures de cours pour {nom} : "))
+        tp_td = int(input(f"Nombre d'heures de TP/TD pour {nom} : "))
+        matieres[i] = {"nom": nom, "professeur_id": professeur_id, "cours": cours, "tp_td": tp_td}
+    return matieres
+
+# Fonction pour générer un emploi du temps unique pour chaque classe
+def generer_emploi_du_temps_unique(classes, jours, heures, matieres):
+    emplois_du_temps = {}
+
+    for classe_id, classe in classes.items():
+        emploi_classe = pd.DataFrame(index=jours, columns=heures)
+        matieres_disponibles = list(matieres.values())
+        random.shuffle(matieres_disponibles)
+
+        for matiere in matieres_disponibles:
+            heures_disponibles = list(heures)
+            random.shuffle(heures_disponibles)
+            jours_disponibles = list(jours)
+
+            # Ajouter les cours (2 heures) une fois par semaine
+            for _ in range(1):  # Limite à une occurrence par semaine
+                if not heures_disponibles or not jours_disponibles:
+                    break
+                heure = heures_disponibles.pop()
+                jour = random.choice(jours_disponibles)
+
+                while not pd.isna(emploi_classe.at[jour, heure]):
+                    if not heures_disponibles:
+                        break
+                    heure = heures_disponibles.pop()
+
+                if pd.isna(emploi_classe.at[jour, heure]):
+                    emploi_classe.at[jour, heure] = f"{matiere['nom']} (Cours)"
+                    jours_disponibles.remove(jour)
+
+            # Ajouter TP/TD (2 heures) si nécessaire, une fois par semaine
+            if matiere["tp_td"] > 0:
+                for _ in range(1):  # Limite à une occurrence par semaine
+                    if not heures_disponibles or not jours_disponibles:
+                        break
+                    heure = heures_disponibles.pop()
+                    jour = random.choice(jours_disponibles)
+
+                    while not pd.isna(emploi_classe.at[jour, heure]):
+                        if not heures_disponibles:
+                            break
+                        heure = heures_disponibles.pop()
+
+                    if pd.isna(emploi_classe.at[jour, heure]):
+                        emploi_classe.at[jour, heure] = f"{matiere['nom']} (TP/TD)"
+                        jours_disponibles.remove(jour)
+
+        emplois_du_temps[classe["nom"]] = emploi_classe
+
+    return emplois_du_temps
+
+# Fonction pour enregistrer et afficher les emplois du temps dans un fichier CSV
+def sauvegarder_emplois_csv(emplois):
+    for classe, planning in emplois.items():
+        fichier_csv = f"emploi_du_temps_{classe}.csv"
+        planning.to_csv(fichier_csv, index=True)
+        print(f"Emploi du temps pour la classe {classe} enregistré dans {fichier_csv}.")
+
+# Main
 jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
-heures = ["8h-10h", "10h-12h", "12h-14h", "14h-16h", "16h-18h"]
+heures = ["8h-10h", "10h-12h", "14h-16h", "16h-18h"]
 
-# Professeurs
-professeurs = {
-    1: {"nom": "Mme HAYAT", "disponibilités": ["Lundi", "Mardi"]},
-    2: {"nom": "M. MOHAMED", "disponibilités": ["Mercredi", "Jeudi", "Samedi"]},
-    3: {"nom": "M. ZAKARIA", "disponibilités": ["Jeudi", "Vendredi", "Samedi"]},
-    4: {"nom": "M. BOUCHICH", "disponibilités": ["Vendredi", "Samedi"]},
-    5: {"nom": "M. BOUTOUBA", "disponibilités": ["Mardi", "Jeudi", "Vendredi", "Samedi"]},
-    6: {"nom": "M. Naser", "disponibilités": ["Mercredi", "Jeudi", "Vendredi", "Samedi"]},
-    7: {"nom": "Mme HAYAT", "disponibilités": ["Mardi", "Jeudi", "Vendredi", "Samedi"]},
-}
+print("Saisir les données pour les professeurs, classes et matières :")
+professeurs = saisir_professeurs()
+classes = saisir_classes()
+matieres = saisir_matieres(professeurs)
 
-# Classes
-classes = {
-    1: {"nom": "IA A"},
-    2: {"nom": "IA B"},
-    3: {"nom": "ROC A"},
-    4: {"nom": "ROC B"},
-    5: {"nom": "GINF A"},
-    6: {"nom": "GINF B"},
-    7: {"nom": "IRSI A"},
-    8: {"nom": "IRSI B"},
-}
+emplois = generer_emploi_du_temps_unique(classes, jours, heures, matieres)
 
-# Matières avec durées (en heures par semaine)
-matieres = {
-    1: {"nom": "DEV_MOBILE", "professeur_id": 4, "cours": 2, "tp_td": 2},
-    2: {"nom": "DEV_WEB", "professeur_id": 3, "cours": 2, "tp_td": 2},
-    3: {"nom": "FRANCAIS", "professeur_id": 1, "cours": 2, "tp_td": 0},
-    4: {"nom": "ANGLAIS", "professeur_id": 6, "cours": 2, "tp_td": 0},
-    5: {"nom": "COUR_SP", "professeur_id": 5, "cours": 2, "tp_td": 2},
-    6: {"nom": "GESTION", "professeur_id": 2, "cours": 2, "tp_td": 2},
-    7: {"nom": "CURATION", "professeur_id": 7, "cours": 2, "tp_td": 0},
-}
-
-# Fonction pour vérifier la disponibilité d'un professeur
-def est_prof_disponible(professeur_id, jour):
-    return jour in professeurs[professeur_id]["disponibilités"]
-
-# Fonction pour générer l'emploi du temps avec OR-Tools
-def generer_emploi_du_temps(classes, jours, heures, matieres):
-    # Initialiser le modèle
-    model = cp_model.CpModel()
-
-    # Variables
-    emploi_du_temps = {}
-    for classe_id in classes:
-        for matiere_id, matiere in matieres.items():
-            for jour in range(len(jours)):
-                for heure in range(len(heures)):
-                    emploi_du_temps[(classe_id, matiere_id, jour, heure)] = model.NewBoolVar(
-                        f"classe_{classe_id}_matiere_{matiere_id}_jour_{jour}_heure_{heure}"
-                    )
-
-    # Contraintes
-    for classe_id in classes:
-        for matiere_id, matiere in matieres.items():
-            # Chaque matière doit avoir exactement les heures prévues (cours et TP/TD)
-            model.Add(
-                sum(
-                    emploi_du_temps[(classe_id, matiere_id, jour, heure)]
-                    for jour in range(len(jours))
-                    for heure in range(len(heures))
-                )
-                == matiere["cours"] + matiere["tp_td"]
-            )
-
-    # Une classe ne peut pas avoir plusieurs matières au même moment
-    for jour in range(len(jours)):
-        for heure in range(len(heures)):
-            for classe_id in classes:
-                model.Add(
-                    sum(
-                        emploi_du_temps[(classe_id, matiere_id, jour, heure)]
-                        for matiere_id in matieres
-                    )
-                    <= 1
-                )
-
-    # Disponibilité des professeurs
-    for matiere_id, matiere in matieres.items():
-        professeur_id = matiere["professeur_id"]
-        for jour in range(len(jours)):
-            if not est_prof_disponible(professeur_id, jours[jour]):
-                for heure in range(len(heures)):
-                    for classe_id in classes:
-                        model.Add(emploi_du_temps[(classe_id, matiere_id, jour, heure)] == 0)
-
-    # Résolution
-    solver = cp_model.CpSolver()
-    status = solver.Solve(model)
-
-    if status == cp_model.OPTIMAL:
-        emplois = collections.defaultdict(lambda: collections.defaultdict(list))
-        for classe_id in classes:
-            for matiere_id, matiere in matieres.items():
-                for jour in range(len(jours)):
-                    for heure in range(len(heures)):
-                        if solver.Value(emploi_du_temps[(classe_id, matiere_id, jour, heure)]):
-                            emplois[classes[classe_id]["nom"]][jours[jour]].append(
-                                f"{heures[heure]}: {matiere['nom']}"
-                            )
-        return emplois
-    else:
-        print("Aucune solution trouvée.")
-        return None
-
-# Générer l'emploi du temps
-emploi = generer_emploi_du_temps(classes, jours, heures, matieres)
-
-# Affichage
-if emploi:
-    for classe, planning in emploi.items():
+if emplois:
+    for classe, planning in emplois.items():
         print(f"\nEmploi du temps pour la classe {classe}:")
-        for jour, activites in planning.items():
-            print(f"  {jour}: {', '.join(activites)}")
+        print(planning.to_string(index=True))
+    sauvegarder_emplois_csv(emplois)
