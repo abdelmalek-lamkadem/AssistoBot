@@ -1,2 +1,3 @@
-# Générer Les Emplois Du Temps
-Cette branche propose une implémentation optimisée pour générer des emplois du temps adaptés aux contraintes définies. Consultez la documentation interne pour les détails techniques. Contributions et retours sont encouragés.
+# Générateur d'Emploi du Temps
+Ce projet est une application Python qui permet de générer des emplois du temps uniques pour différentes classes, en tenant compte des disponibilités des professeurs et des spécificités des matières (cours, TP/TD). Les emplois du temps sont créés de manière aléatoire tout en respectant des contraintes comme la non-duplication des matières dans une semaine. Chaque emploi du temps est enregistré dans un fichier CSV distinct, facilitant la gestion et le partage. Le code inclut des fonctions pour saisir les données (professeurs, classes, matières), générer les emplois du temps, et les enregistrer au format CSV. Ce projet est idéal pour les établissements académiques cherchant une solution simple pour organiser leurs plannings.
+
